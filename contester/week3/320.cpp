@@ -8,11 +8,11 @@ int main() {
 
 	double b = pow(x+a, 2);
 
-	for (int i=1; i<=n; ++i) {
+	for (int i=1; i<n; ++i) {
 		b = pow(b+a, 2);
 	}
 
-    std::cout << b + a;
+    std::cout << round((b + a) * 1000.0)/1000.0;
 
     return 0;
 }

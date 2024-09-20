@@ -1,16 +1,16 @@
 #include <iostream>
 
 int main() {
-    int n;
+    double n;
     std::cin >> n;
 
-	long double a = 1 / n;
+	double a = 1/103;
 
-	for (int i=n-2; i>0; i-=2) {
-		a = 1 / (i + a);
+	for (int i=101; i>=1; i-=2) {
+	    a = i + (1 / a);
 	}
 
-	std::cout << a;
+	std::cout << 1/a;
 
     return 0;
 }
