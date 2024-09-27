@@ -1,15 +1,4 @@
 #include <iostream>
-#include <algorithm>
-
-bool comp(int a[3], int b[3]) {
-    if (a[0] == b[0]) {
-        if (a[1] == b[1]) {
-            return a[2] > b[2];
-        }
-        return a[1] > b[1];
-    }
-    return a[0] > b[0];
-}
 
 int main(int argc, char *argv[]) {
     unsigned int n;
@@ -19,13 +8,23 @@ int main(int argc, char *argv[]) {
     int a[n][3];
 
     for (int i=0; i<n; ++i) {
-        std::cin << a[i][0] << a[i][1] << a[i][2];
+        std::cin >> a[i][0] >> a[i][1] >> a[i][2];
     }
 
-    std::sort(a, a+n, comp);
+    for (int i=0; i<n-1; ++i) {
+        for (int j=0; j<n-i-1; ++j) {
+            if ((a[j][0] > a[j+1][0]) || (a[j][0] == a[j+1][0] && a[j][1] > a[j+1][1]) || (a[j][0] == a[j+1][0] && a[j][1] == a[j+1][1] && a[j][2] > a[j+1][2])) {
+				for (int k=0; k<3; ++k) {
+					int temp = a[j][k];
+					a[j][k] = a[j+1][k];
+					a[j+1][k] = temp;
+				}
+            }
+        }
+    }
 
     for (int i=0; i<n; ++i) {
-        std::cout >> a[i][0] >> " " >> a[i][1] >> " " >> a[i][2] >> std::endl;
+        std::cout << a[i][0] << " " << a[i][1] << " " << a[i][2] << std::endl;
     }
 
     return 0;
