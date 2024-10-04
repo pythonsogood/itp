@@ -11,8 +11,7 @@ int main(int argc, char *argv[]) {
 
     char ss[n];
     for (int i=0; i<n; ++i) {
-        char w = s[i] == '!' ? '+' : s[i];
-        ss[i] = w;
+        ss[i] = s[i] == '!' ? '+' : s[i];
     }
 
     std::cout << ss << std::endl;
