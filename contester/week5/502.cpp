@@ -14,9 +14,9 @@ int main(int argc, char *argv[]) {
 
             if (j==i) {
                 sum_main += a;
-            } else if ((n-1)-j==i) {
+            }
+            if (j==(n-1-i)) {
                 sum_sec += a;
-                std::cout << " =" << a << "= ";
             }
         }
     }
