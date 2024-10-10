@@ -10,11 +10,11 @@ int main(int argc, char *argv[]) {
 
 	for (int i=0; i<n; ++i) {
 		for (int j=0; j<m; ++j) {
-			if (i % 2 == 0) {
-				std::cout << i*m+j << " ";
-			} else {
-				std::cout << (i+1)*m-1-j << " ";
+			int value = i % 2 == 0 ? i*m+j : (i+1)*m-1-j;
+			if (value < 10 && value > 0) {
+				std::cout << " ";
 			}
+			std::cout << value << " ";
 		}
 		std::cout << std::endl;
 	}
