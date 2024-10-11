@@ -1,29 +1,30 @@
 #include <iostream>
 
-int main(int argc, char *argv[]) {
-    int n;
+int main() {
+    unsigned int n;
 
     std::cin >> n;
 
-    char s[n];
+    char a[n];
 
-    std::cin >> s;
+    std::cin >> a;
 
-    char ss[n*3];
-    int ss_length = 0;
-    for (int i=0; i<n; ++i) {
-        if (s[i] == '.') {
-            ss[ss_length] = '.';
-            ss[ss_length+1] = '.';
-            ss[ss_length+2] = '.';
-            ss_length+=2;
-        } else {
-            ss[ss_length] = s[i];
+    int start = -1;
+    int end = -1;
+
+    for (int i=n-1; i>=0; --i) {
+        if (a[i] == '!') {
+            if (end == -1) {
+                end = i;
+            } else if (start == -1) {
+                start = i;
+            }
         }
-        ss_length++;
     }
 
-    std::cout << ss << std::endl;
+    for (int i=start+1; i<end; ++i) {
+        std::cout << a[i];
+    }
 
     return 0;
 }
