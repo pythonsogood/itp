@@ -1,6 +1,3 @@
-// Known issues
-// Wrong Answer: test 3
-
 #include <iostream>
 
 int compPositiveCountArrays(int a[], int b[], int length) {
