@@ -24,12 +24,8 @@ int main(int argc, char *argv[]) {
 		}
 
 		for (int _=0; _<m; ++_) {
-			bool found = false;
 			while (true) {
-				eliminated_index++;
-				if (eliminated_index >= n) {
-					eliminated_index = 0;
-				}
+				eliminated_index = (eliminated_index + 1) % n;
 				if (!a[eliminated_index]) {
 					break;
 				}

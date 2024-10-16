@@ -7,9 +7,8 @@ int min(int a, int b, int c, int d) {
 		return b;
 	} else if (c < a && c < b && c < d) {
 		return c;
-	} else {
-		return d;
 	}
+	return d;
 }
 
 int main(int argc, char *argv[]) {

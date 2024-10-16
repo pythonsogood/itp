@@ -1,12 +1,8 @@
-// Known issues
-// Wrong Answer: test 3
-
 #include <iostream>
 
-int compPositiveCountArrays(int a[], int b[], int length) {
-	int aa = 0;
-	int bb = 0;
-	for (int i=0; i<length; ++i) {
+int compPositiveCountMatrixRow(int a[][100], int n, int m) {
+	int max_row = -1;
+	for (int i=0; i<n; ++i) {
 		if (a[i] > 0) {
 			aa++;
 		}
@@ -25,19 +21,17 @@ int compPositiveCountArrays(int a[], int b[], int length) {
 }
 
 int main(int argc, char *argv[]) {
-	unsigned int n;
-	std::cin >> n;
+	unsigned int n, m;
+	std::cin >> n >> m;
 
-	int a[n];
-	int b[n];
+	int a[n][m];
 	for (int i=0; i<n; ++i) {
-		std::cin >> a[i];
-	}
-	for (int i=0; i<n; ++i) {
-		std::cin >> b[i];
+        for (int j=0; j<m; ++j) {
+		    std::cin >> a[i][j];
+        }
 	}
 
-	switch (compPositiveCountArrays(a, b, n)) {
+	switch (compPositiveCountMatrixRow(a, n, m)) {
 		case 1:
 			std::cout << "Number of positives in the first array is greater";
 			break;
