@@ -6,14 +6,8 @@ void even_odd_process(int* arr, unsigned int n) {
 		a[i] = arr[i];
 	}
 
-	int even = -(n/2);
 	for (int i=0; i<n; ++i) {
-		if (i < n/2) {
-			arr[i] = a[i*(1+i)/2];
-		} else {
-			arr[i] = a[i+1 + even];
-			even++;
-		}
+		arr[i] = a[((i % (n/2)) * 2) + (i < n/2 ? 0 : 1)];
 	}
 }
 
