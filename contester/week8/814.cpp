@@ -3,20 +3,23 @@
 void move_to(int** x, int** y, char* direction, int length) {
 	switch (direction[0]) {
 		case 'N':
-			*y = &(*y + length);
+		    int pos = *y + length;
+			*y = &pos;
 			break;
 
 		case 'S':
-			std::cout << *y << " " << length << std::endl;
-		    *y = &(*y - length);
+		    int pos = *y - length;
+			*y = &pos;
 			break;
 
 		case 'E':
-            *x = &(*x + length);
+            int pos = *x + length;
+			*x = &pos;
             break;
 
 		case 'W':
-            *x = &(*x - length);
+            int pos *x - length;
+			*x = &pos;
             break;
 
 		default:
