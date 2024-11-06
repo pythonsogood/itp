@@ -2,22 +2,14 @@
 #include <string>
 #include <cstring>
 
-int charLength(char s[]) {
-	int i = 0;
-	while (s[i] != '\0') {
-		++i;
-	}
-	return i;
-}
-
 void replace(char *source, char *dest) {
-	int length = charLength(source);
+	int length = std::strlen(source);
 	for (int i=0; i<length; ++i) {
 		dest[i] = (source[i] == '!' ? '.' : source[i]);
 	}
 }
 
-int main(int argc, char* argv[]) {
+int main() {
 	std::string _s;
 	std::getline(std::cin, _s);
 

@@ -2,6 +2,7 @@
 // Wrong Answer test 1
 
 #include <iostream>
+#include <string>
 #include <cstring>
 
 void reverse(char* s) {
@@ -51,13 +52,41 @@ void formatNumber(int* n, char* dest) {
 }
 
 int main() {
-	int n;
-	std::cin >> n;
+	std::string s;
+	std::getline(std::cin, s);
 
-	char s[200];
-	formatNumber(&n, s);
+	int length = s.length();
+	int start = -1;
+	int start_max = -1;
+	int start_max_length = -1;
 
-	std::cout << s;
+	for (int i=0; i<length; ++i) {
+		if (std::isdigit(s[i])) {
+			if (start == -1) {
+				start = i;
+			}
+		} else {
+			start = -1;
+		}
+		if (start != -1 && (i - start) > start_max_length) {
+			start_max = start;
+			start_max_length = i - start;
+		}
+	}
+
+	int number = 0;
+	for (int i=start_max; i<length; ++i) {
+		if (!std::isdigit(s[i])) {
+			break;
+		}
+		number = number * 10 + (s[i] - '0');
+	}
+
+	char formatted_number[1000000];
+
+	formatNumber(&number, formatted_number);
+
+	std::cout << formatted_number;
 
 	return 0;
 }

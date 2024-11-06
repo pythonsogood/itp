@@ -1,30 +1,18 @@
 #include <iostream>
+#include <cstring>
 
-int charLength(char s[]) {
-	int i = 0;
-	while (s[i] != '\0') {
-		++i;
-	}
-	return i;
-}
-
-char toLowerCase(char* s) {
-	int ascii = int(*s);
-	return (ascii >= 'A' && ascii <= 'Z') ? char(ascii + int('a' - 'A')) : *s;
-}
-
-void toLowerCaseArray(char* s) {
-	int length = charLength(s);
+void toLowerCase(char* s) {
+	int length = std::strlen(s);
 	for (int i=0; i<length; ++i) {
-		s[i] = toLowerCase(&s[i]);
+		s[i] = std::tolower(s[i]);
 	}
 }
 
 bool contains_case_insensitive(char* s1, char* s2) {
-	int length = charLength(s1);
-	int length2 = charLength(s2);
+	int length = std::strlen(s1);
+	int length2 = std::strlen(s2);
 
-	toLowerCaseArray(s1);
+	toLowerCase(s1);
 
 	int j = 0;
 	for (int i=0; i<length; ++i) {
@@ -41,7 +29,7 @@ bool contains_case_insensitive(char* s1, char* s2) {
 	return false;
 }
 
-int main(int argc, char* argv[]) {
+int main() {
 	char s[2048];
 	std::cin >> s;
 

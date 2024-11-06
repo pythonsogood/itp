@@ -32,20 +32,25 @@ int main() {
 	std::cin >> location;
 	toUppercase(location);
 
-	bool found = false;
+	int train_index = -1;
 
 	for (int i=0; i<n; ++i) {
 		char *destination_uppercase = trains[i].destination;
 		toUppercase(destination_uppercase);
 
 		if (std::strcmp(location, destination_uppercase) == 0) {
-			std::cout << trains[i].id << "_" << destination_uppercase << "_" << trains[i].time;
-			found = true;
-			break;
+			if (train_index == -1 || std::strcmp(trains[i].time, trains[train_index].time) < 0) {
+				train_index = i;
+			}
 		}
 	}
 
-	if (!found) {
+	if (train_index != -1) {
+		char *destination_uppercase = trains[train_index].destination;
+		toUppercase(destination_uppercase);
+
+		std::cout << trains[train_index].id << "_" << destination_uppercase << "_" << trains[train_index].time;
+	} else {
 		std::cout << "Impossible";
 	}
 
