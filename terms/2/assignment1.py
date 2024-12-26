@@ -300,7 +300,14 @@ def task15(lst: list, target: int) -> str:
 	"""
 	indices = None
 	try:
-		indices = int("Perform calculations in this block")
+		# indices = int("Perform calculations in this block")
+		indices = []
+		for i, num1 in enumerate(lst):
+			for j, num2 in enumerate(lst[i+1:]):
+				if num1 + num2 == target:
+					indices = [i, j+i+1]
+					break
+		indices = str(indices)
 	except:
 		indices = "Error"
 	finally:
@@ -320,7 +327,33 @@ def task16(s: str) -> str:
 	"""
 	result = None
 	try:
-		result = int("Perform calculations in this block")
+		# result = int("Perform calculations in this block")
+		roman_values = {
+			"I": 1,
+			"IV": 4,
+			"V": 5,
+			"IX": 9,
+			"X": 10,
+			"XL": 40,
+			"L": 50,
+			"XC": 90,
+			"C": 100,
+			"CD": 400,
+			"D": 500,
+			"CM": 900,
+			"M": 1000,
+		}
+		result = 0
+		i = 0
+		s = s.upper()
+		while i < len(s):
+			if i+1 < len(s) and s[i:i+2] in roman_values:
+				result += roman_values[s[i:i+2]]
+				i += 1
+			else:
+				result += roman_values[s[i]]
+			i += 1
+		result = str(result)
 	except:
 		result = "Error"
 	finally:
@@ -392,7 +425,18 @@ def task19(lst: list) -> str:
 	"""
 	range_ = None
 	try:
-		range_ = int("Perform calculations in this block")
+		# range_ = int("Perform calculations in this block")
+		range_ = []
+		i = 0
+		while i < len(lst):
+			j = i + 1
+			while j < len(lst) and lst[j] - lst[i] == 1:
+				j += 1
+			if j - i == 1:
+				range_.append(f"{lst[i]}")
+			else:
+				range_.append(f"{lst[i]}:{lst[j-1]}")
+			i = j
 	except:
 		range_ = "Error"
 	finally:
