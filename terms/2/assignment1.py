@@ -54,11 +54,11 @@ def task3(score: int) -> str:
 	grade = None
 	try:
 		# grade = int("Perform calculations in this block")
-		if score >= 90:
+		if score > 90:
 			grade = "A"
-		elif score >= 80:
+		elif score > 80:
 			grade = "B"
-		elif score >= 70:
+		elif score > 70:
 			grade = "C"
 		else:
 			grade = "Fail"
@@ -82,7 +82,7 @@ def task4(input_string: str) -> str:
 	vowel_count = None
 	try:
 		# vowel_count = int("Perform calculations in this block")
-		vowel_count = str(sum(i in {"a", "e", "i", "o", "u"} for i in input_string))
+		vowel_count = str(sum(i in {"a", "e", "i", "o", "u"} for i in input_string.lower()))
 	except:
 		vowel_count = "Error"
 	finally:
@@ -202,7 +202,7 @@ def task10(input_string: str) -> str:
 	frequency = None
 	try:
 		# frequency = int("Perform calculations in this block")
-		frequency = str({i: input_string.count(i) for i in set(input_string)})
+		frequency = str({i: input_string.count(i) for i in sorted(set(input_string), key=lambda i: input_string.find(i))})
 	except:
 		frequency = "Error"
 	finally:
@@ -240,6 +240,7 @@ def task12(items: list) -> str:
 	sorted_list = None
 	try:
 		# sorted_list = int("Perform calculations in this block")
+		# NOTE: it looks like you forgot to convert expected to string, cause it does not passes test case
 		sorted_list = str(sorted(items))
 	except:
 		sorted_list = "Error"
@@ -437,6 +438,7 @@ def task19(lst: list) -> str:
 			else:
 				range_.append(f"{lst[i]}:{lst[j-1]}")
 			i = j
+		range_ = str(range_)
 	except:
 		range_ = "Error"
 	finally:
