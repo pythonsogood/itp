@@ -54,11 +54,11 @@ def task3(score: int) -> str:
 	grade = None
 	try:
 		# grade = int("Perform calculations in this block")
-		if score > 90:
+		if score >= 90:
 			grade = "A"
-		elif score > 80:
+		elif score >= 80:
 			grade = "B"
-		elif score > 70:
+		elif score >= 70:
 			grade = "C"
 		else:
 			grade = "Fail"
@@ -392,7 +392,7 @@ def task18(lst: list) -> str:
 	result = None
 	try:
 		# result = int("Perform calculations in this block")
-		result = str(len(lst) == len(set(lst)))
+		result = str(len(lst) > len(set(lst)))
 	except:
 		result = "Error"
 	finally:
@@ -430,7 +430,7 @@ def task19(lst: list) -> str:
 		i = 0
 		while i < len(lst):
 			j = i + 1
-			while j < len(lst) and lst[j] - lst[i] == 1:
+			while j < len(lst) and lst[j] - lst[j-1] == 1:
 				j += 1
 			if j - i == 1:
 				range_.append(f"{lst[i]}")
